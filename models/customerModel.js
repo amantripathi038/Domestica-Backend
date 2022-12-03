@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const addressSchema = require("./address");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt")
 
@@ -42,7 +41,30 @@ const customerSchema = new mongoose.Schema({
     },
 
     address: {
-        type: addressSchema
+        house: {
+            type: String,
+            default: ""
+        },
+        area: {
+            type: String,
+            default: ""
+        },
+        city: {
+            type: String,
+            default: ""
+        },
+        pincode: {
+            type: Number,
+            default: 0
+        },
+        state: {
+            type: String,
+            default: ""
+        },
+        landmark: {
+            type: String,
+            default: ""
+        }
     },
 
     aadhar: {

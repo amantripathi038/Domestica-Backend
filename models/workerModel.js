@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 var ageCalculator = require('age-calculator');
-const addressSchema = require("./address");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt")
 
@@ -10,12 +9,13 @@ const workerSchema = new mongoose.Schema({
         required: [true, "Please enter your name."]
     },
 
-    email: { type: String, 
-        trim: true, 
+    email: {
+        type: String,
+        trim: true,
         index: {
             unique: true,
-            partialFilterExpression: {email: {$exists: "true"}}
-        } 
+            partialFilterExpression: { email: { $exists: "true" } }
+        }
     },
 
     contact: {
@@ -36,7 +36,30 @@ const workerSchema = new mongoose.Schema({
     },
 
     address: {
-        type: addressSchema,
+        house: {
+            type: String,
+            default: ""
+        },
+        area: {
+            type: String,
+            default: ""
+        },
+        city: {
+            type: String,
+            default: ""
+        },
+        pincode: {
+            type: Number,
+            default: 0
+        },
+        state: {
+            type: String,
+            default: ""
+        },
+        landmark: {
+            type: String,
+            default: ""
+        }
     },
 
     aadhar: {
